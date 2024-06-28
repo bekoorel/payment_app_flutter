@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:payment_app_flutter/core/widgets/forme_filde.dart';
 
 class Register extends StatelessWidget {
   const Register({super.key});
@@ -7,25 +7,21 @@ class Register extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
+        alignment: Alignment.bottomCenter,
         children: [
-          SizedBox(
-            height: 40.0,
-            child: SignInButton(
-              elevation: 10.0,
-              Buttons.GoogleDark,
-              onPressed: () {},
+          const SizedBox(
+            width: double.infinity,
+            height: double.infinity,
+            child: FittedBox(
+              fit: BoxFit.fill,
+              child: Image(
+                // fit: BoxFit.fill,
+                image: AssetImage('assets/reg.jpg'),
+              ),
             ),
           ),
-          SizedBox(
-            height: 40.0,
-            child: SignInButton(
-              elevation: 10.0,
-              Buttons.Email,
-              onPressed: () {},
-            ),
-          ),
+          FormeFilde(),
         ],
       ),
     );
