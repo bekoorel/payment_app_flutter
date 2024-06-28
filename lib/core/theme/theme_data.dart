@@ -27,4 +27,5 @@ class AppTheme {
         buttonColor: Colors.red,
         textTheme: ButtonTextTheme.primary,
       ));
+
 }

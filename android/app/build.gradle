@@ -38,6 +38,7 @@ android {
 
     kotlinOptions {
         jvmTarget = '17'
+        freeCompilerArgs += ["-Xlint:deprecation"]
     }
 
     defaultConfig {
@@ -55,10 +56,14 @@ android {
     }
 }
 
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-Xlint:deprecation"
+}
 
 flutter {
     source = "../.."
 }
+
 dependencies {
     // Import the BoM for the Firebase platform
     implementation(platform("com.google.firebase:firebase-bom:33.1.1"))
