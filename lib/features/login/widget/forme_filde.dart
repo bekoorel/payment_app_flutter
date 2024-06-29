@@ -56,12 +56,9 @@ class FormeFilde extends StatelessWidget {
                 autofocus: true,
                 keyboardType: TextInputType.name,
                 decoration: InputDecoration(
-                  border: const OutlineInputBorder(),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide:
-                        const BorderSide(color: StyleApp.gray, width: 5.0),
-                  ),
+                  filled: true,
+                  fillColor: StyleApp.gray.withOpacity(0.3),
+                  border: InputBorder.none,
                   focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: StyleApp.indigo, width: 5.0),
                   ),
@@ -80,12 +77,9 @@ class FormeFilde extends StatelessWidget {
               TextFormField(
                 keyboardType: TextInputType.name,
                 decoration: InputDecoration(
-                  border: const OutlineInputBorder(),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide:
-                        const BorderSide(color: StyleApp.gray, width: 5.0),
-                  ),
+                  filled: true,
+                  fillColor: StyleApp.gray.withOpacity(0.3),
+                  border: InputBorder.none,
                   focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: StyleApp.indigo, width: 5.0),
                   ),
@@ -104,12 +98,9 @@ class FormeFilde extends StatelessWidget {
               TextFormField(
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
-                  border: const OutlineInputBorder(),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide:
-                        const BorderSide(color: StyleApp.gray, width: 5.0),
-                  ),
+                  filled: true,
+                  fillColor: StyleApp.gray.withOpacity(0.3),
+                  border: InputBorder.none,
                   focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: StyleApp.indigo, width: 5.0),
                   ),

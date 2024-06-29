@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payment_app_flutter/core/widgets/forme_filde.dart';
+import 'package:payment_app_flutter/features/login/widget/forme_filde.dart';
 
 class Register extends StatelessWidget {
   const Register({super.key});

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:payment_app_flutter/core/network/api.dart';
 
 class Repo {
@@ -11,7 +12,9 @@ class Repo {
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx and is also not 304.
 
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
 
       return await RestClient(Dio()).getTasks();
     }
