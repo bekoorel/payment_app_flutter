@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:payment_app_flutter/core/network/repo.dart';
+import 'package:payment_app_flutter/core/network/web/repo.dart';
 
 final getIt = GetIt.instance;
 

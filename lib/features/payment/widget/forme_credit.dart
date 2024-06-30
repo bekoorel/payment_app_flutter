@@ -104,19 +104,10 @@ class FormeCredit extends StatelessWidget {
               SizedBox(
                 height: 8.h,
               ),
-              GestureDetector(
-                onTap: () {
-                  
-                },
-                child: Container(
-                  width: 300.w,
-                  color: StyleApp.indigo,
-                  child: Text(
-                    'Confirm payment',
-                    style: TextStyle(color: StyleApp.white, fontSize: 20.0.sp),
-                  ),
-                ),
-              )
+              ElevatedButton(
+                onPressed: () {},
+                child: const Text('Confirm Bayment'),
+              ),
             ],
           ),
         ),

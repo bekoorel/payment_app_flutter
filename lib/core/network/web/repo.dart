@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:payment_app_flutter/core/network/api.dart';
+import 'package:payment_app_flutter/core/network/web/api.dart';
 
 class Repo {
   Future<List<Prodact>> dataApi() async {

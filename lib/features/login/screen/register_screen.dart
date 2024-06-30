@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:payment_app_flutter/features/login/widget/forme_filde.dart';
+import 'package:payment_app_flutter/features/login/widget/register_button.dart';
 
 class Register extends StatelessWidget {
   const Register({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
-          const SizedBox(
+          SizedBox(
             width: double.infinity,
             height: double.infinity,
             child: FittedBox(
@@ -21,7 +21,7 @@ class Register extends StatelessWidget {
               ),
             ),
           ),
-          FormeFilde(),
+          RegisterButton(),
         ],
       ),
     );

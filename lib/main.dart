@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,6 +10,7 @@ import 'package:payment_app_flutter/core/router/app_router.dart';
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  await Firebase.initializeApp();
   setup();
   await Future.delayed(const Duration(seconds: 2));
   FlutterNativeSplash.remove();
@@ -25,6 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     GoRouter router = GoRouter(routes: AppRouter.routeList);
+
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       minTextAdapt: true,
