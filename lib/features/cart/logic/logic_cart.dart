@@ -7,6 +7,9 @@ final logicCartProvider = ChangeNotifierProvider(
 
 class LogicCart extends ChangeNotifier {
   List<Map<String, String>> items = [];
+  String counte = '';
+  String total = '';
+
   deletItme(int index) {
     items.removeAt(index);
     notifyListeners();
@@ -21,10 +24,14 @@ class LogicCart extends ChangeNotifier {
     items.add(item);
   }
 
-  double getTotalPrice() {
-    return items.fold(0.0, (sum, item) {
-      double price = double.tryParse(item['price']!) ?? 0.0;
-      return sum + price;
-    });
+  getTotalPriceAndCounts() {
+    List<double> prices = [];
+    for (Map i in items) {
+      double price = double.parse(i['price']);
+      prices.add(price);
+    }
+    counte = prices.length.toString();
+    total = prices.reduce((a, b) => a + b).toString();
+    notifyListeners();
   }
 }

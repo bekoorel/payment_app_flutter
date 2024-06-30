@@ -56,6 +56,7 @@ class RegisterButton extends StatelessWidget {
                   if (await CommunicationsCheck.checkIntrnet(context)) {
                     final isLoged = await GoogleLogin.signInWithGoogle();
                     if (isLoged != null) {
+                      // ignore: use_build_context_synchronously
                       context.go('/Store');
                     }
                   }

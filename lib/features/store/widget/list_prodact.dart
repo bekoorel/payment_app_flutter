@@ -54,8 +54,9 @@ class ListProdact extends StatelessWidget {
                         onPressed: () {
                           ref.read(logicCartProvider).setItem(
                               '${snapshot.data![index].title}',
-                              '${snapshot.data![index].price} EG',
+                              snapshot.data![index].price.toString(),
                               '${snapshot.data![index].image}');
+                          ref.read(logicCartProvider).getTotalPriceAndCounts();
                         },
                         icon: const Icon(Icons.shopping_cart_checkout_sharp),
                         color: StyleApp.indigo,
