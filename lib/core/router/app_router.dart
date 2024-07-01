@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:payment_app_flutter/features/cart/screen/cart_screen.dart';
 import 'package:payment_app_flutter/features/login/screen/register_screen.dart';
 import 'package:payment_app_flutter/features/payment/screen/payment_screen.dart';
+import 'package:payment_app_flutter/features/payment/screen/web_view.dart';
 import 'package:payment_app_flutter/features/store/screen/store.dart';
 
 class AppRouter {
@@ -29,6 +30,12 @@ class AppRouter {
       path: '/PaymentScreen',
       builder: (BuildContext context, GoRouterState state) {
         return const PaymentScreen();
+      },
+    ),
+    GoRoute(
+      path: '/WebView',
+      builder: (BuildContext context, GoRouterState state) {
+        return WebView();
       },
     ),
   ];
