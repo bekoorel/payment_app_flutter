@@ -3,14 +3,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:payment_app_flutter/core/Dependencies/get_it.dart';
-import 'package:payment_app_flutter/core/network/payment_web/payment_api.dart';
+
 import 'package:payment_app_flutter/core/style/style.dart';
 import 'package:payment_app_flutter/features/payment/logic/credit_logic.dart';
+import 'package:payment_app_flutter/features/payment/logic/payment_processing.dart';
 
 class FormeCredit extends StatelessWidget {
   FormeCredit({super.key});
   final formeKey = GlobalKey<FormState>();
-  final api = getIt<PaymentApi>();
+  final startPay = getIt<PayUsingIfreme>();
   @override
   Widget build(BuildContext context) {
     return Consumer(
@@ -110,8 +111,8 @@ class FormeCredit extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  await api.handelTokens('100');
-                  // context.go('/WebView');
+                  await startPay.getUrlIfreme();
+                  context.go('/WebView');
                 },
                 child: const Text('Confirm Bayment'),
               ),

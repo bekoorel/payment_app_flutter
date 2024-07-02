@@ -1,47 +1,59 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:payment_app_flutter/core/constens/conestans.dart';
 
 class PaymentApi {
   var dio = Dio();
-  // step 1
-  String publicTokenLink = 'https://accept.paymob.com/api/auth/tokens';
-  String publicToken = json.encode({
-    "api_key":
-        "ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TWpFNU1qSXpMQ0p1WVcxbElqb2lNVGN4T1RnME1UazJOQzQyTnpZNU9EVWlmUS5fRTdld2hfQWQ0aVR2ajZlaHpQOUNhbHlhWGRPUW9oQ0llQS1wUlJiLWZxV3lHZkFwOFRxcFhEa0xMenl5c3R6Ums0QjgxSG0wYjVJTFpGS2lVSVIwZw=="
-  });
-
-  // step 2
-  String ordersidLink = 'https://accept.paymob.com/api/ecommerce/orders';
-
-  // step 3
-  String paymentTokenLink =
-      'https://accept.paymob.com/api/acceptance/payment_keys';
 
   handelTokens(
     String amountCents,
   ) async {
-    final getPublicToken = await apiReq(publicTokenLink, publicToken);
-    print(
-      getPublicToken.data["token"],
-    );
-    final getordersid = await apiReq(
-      ordersidLink,
-      jsonEncode(
+    try {
+      final getPublicToken =
+          await apiReq(ConstansUrl.publicTokenLink, ConstansUrl.publicToken);
+
+      final getordersid = await apiReq(
+        ConstansUrl.ordersidLink,
         {
           "auth_token": getPublicToken.data["token"],
-          "delivery_needed": "false",
+          "delivery_needed": "true",
           "amount_cents": amountCents,
           "currency": "EGP",
           "items": [],
         },
-      ),
-    );
-    // final getTokenPayment=apiReq(paymentTokenLink, jsonEncode(),);
+      );
 
-    print(
-      jsonEncode(getordersid.data),
-    );
+      final getTokenPayment = await apiReq(
+        ConstansUrl.paymentTokenLink,
+        {
+          "auth_token": getPublicToken.data["token"],
+          "amount_cents": amountCents,
+          "expiration": 3600,
+          "order_id": getordersid.data['id'],
+          "billing_data": {
+            "apartment": "NA",
+            "email": "NA",
+            "floor": "NA",
+            "first_name": "ahmed",
+            "street": "NA",
+            "building": "NA",
+            "phone_number": "+201118849262",
+            "shipping_method": "NA",
+            "postal_code": "NA",
+            "city": "NA",
+            "country": "NA",
+            "last_name": "ramdan",
+            "state": "NA"
+          },
+          "currency": "EGP",
+          "integration_id": 2298940,
+          "lock_order_when_paid": "false"
+        },
+      );
+      return 'https://accept.paymob.com/api/acceptance/iframes/409410?payment_token=${getTokenPayment.data['token']}';
+    } catch (e) {
+      print(e);
+    }
   }
 
   Future<Response<dynamic>> apiReq(String url, data) async {
@@ -52,6 +64,15 @@ class PaymentApi {
       ),
       data: data,
     );
+    loges();
     return response;
+  }
+
+  loges() {
+    dio.interceptors.add(
+      LogInterceptor(
+        logPrint: (o) => debugPrint(o.toString()),
+      ),
+    );
   }
 }
