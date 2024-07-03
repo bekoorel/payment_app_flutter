@@ -1,23 +1,24 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:payment_app_flutter/core/Dependencies/get_it.dart';
 import 'package:payment_app_flutter/core/constens/conestans.dart';
+import 'package:payment_app_flutter/features/payment/logic/credit_logic.dart';
 
 class PaymentApi {
   var dio = Dio();
+  final formeData = getIt<CreditLogic>();
 
-  handelTokens(
-    String amountCents,
-  ) async {
+  handelTokens( ) async {
     try {
       final getPublicToken =
           await apiReq(ConstansUrl.publicTokenLink, ConstansUrl.publicToken);
-
+ 
       final getordersid = await apiReq(
         ConstansUrl.ordersidLink,
         {
           "auth_token": getPublicToken.data["token"],
           "delivery_needed": "true",
-          "amount_cents": amountCents,
+          "amount_cents": "500",
           "currency": "EGP",
           "items": [],
         },
@@ -27,22 +28,22 @@ class PaymentApi {
         ConstansUrl.paymentTokenLink,
         {
           "auth_token": getPublicToken.data["token"],
-          "amount_cents": amountCents,
+          "amount_cents": "500",
           "expiration": 3600,
           "order_id": getordersid.data['id'],
           "billing_data": {
-            "apartment": "NA",
-            "email": "NA",
+            "apartment": formeData.apartment,
+            "email": formeData.email,
             "floor": "NA",
-            "first_name": "ahmed",
-            "street": "NA",
-            "building": "NA",
-            "phone_number": "+201118849262",
+            "first_name": formeData.firstName,
+            "street": formeData.street,
+            "building": formeData.building,
+            "phone_number": formeData.phoneNumber,
             "shipping_method": "NA",
-            "postal_code": "NA",
-            "city": "NA",
-            "country": "NA",
-            "last_name": "ramdan",
+            "postal_code": formeData.postalCode,
+            "city": formeData.city,
+            "country": formeData.country,
+            "last_name": formeData.lastName,
             "state": "NA"
           },
           "currency": "EGP",
@@ -52,7 +53,7 @@ class PaymentApi {
       );
       return 'https://accept.paymob.com/api/acceptance/iframes/409410?payment_token=${getTokenPayment.data['token']}';
     } catch (e) {
-      print(e);
+      rethrow;
     }
   }
 

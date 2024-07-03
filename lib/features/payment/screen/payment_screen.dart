@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:payment_app_flutter/core/style/style.dart';
-import 'package:payment_app_flutter/features/payment/widget/credit_card.dart';
+import 'package:payment_app_flutter/core/widgets/text_widget.dart';
 import 'package:payment_app_flutter/features/payment/widget/forme_credit.dart';
 
 class PaymentScreen extends StatelessWidget {
@@ -11,14 +11,13 @@ class PaymentScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: StyleApp.indigo,
-        title: const Text(
+        title: TextWidget.textGray15(
           'Pay with credit card',
-          style: TextStyle(color: StyleApp.white),
         ),
       ),
       body: Column(
         children: [
-          const CreditCard(),
+     
           FormeCredit(),
         ],
       ),

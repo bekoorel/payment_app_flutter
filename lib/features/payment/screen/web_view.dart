@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:payment_app_flutter/core/Dependencies/get_it.dart';
 import 'package:payment_app_flutter/core/style/style.dart';
+import 'package:payment_app_flutter/core/widgets/text_widget.dart';
 import 'package:payment_app_flutter/features/payment/logic/payment_processing.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -12,7 +13,7 @@ class WebView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: StyleApp.indigo,
-        title: const Text('Payment'),
+        title:  TextWidget.textGray15('Payment'),
       ),
       body: WebViewWidget(
         controller: WebViewController()

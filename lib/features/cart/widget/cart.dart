@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:payment_app_flutter/core/style/style.dart';
+import 'package:payment_app_flutter/core/widgets/text_widget.dart';
 import 'package:payment_app_flutter/features/cart/logic/logic_cart.dart';
 
 class Cart extends StatelessWidget {
@@ -14,8 +15,9 @@ class Cart extends StatelessWidget {
         onPressed: () {
           if (ref.read(logicCartProvider).items.isEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('There are no products in the cart'),
+              SnackBar(
+                content:
+                    TextWidget.textGray15('There are no products in the cart'),
               ),
             );
           } else {

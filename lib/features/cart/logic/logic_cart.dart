@@ -31,7 +31,8 @@ class LogicCart extends ChangeNotifier {
       prices.add(price);
     }
     counte = prices.length.toString();
-    total = prices.reduce((a, b) => a + b).toString();
+    total = prices.reduce((a, b) => a + b).toStringAsFixed(2).toString();
+
     notifyListeners();
   }
 }
