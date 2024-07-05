@@ -10,6 +10,14 @@ This project demonstrates how to integrate the Paymob payment gateway into a Flu
 4. **State Management System for Efficient Resource Use**
 5. **Google Account Login**
 
+## Video Demo
+
+<video width="320" height="240" controls>
+  <source src="vedio/vi.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
 ## Packages Used
 
 - **retrofit**: ^4.1.0
